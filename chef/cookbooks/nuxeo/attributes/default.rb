@@ -3,6 +3,10 @@
 default["site"]["snapshot-search-pattern"] = "http://maven.in.nuxeo.com/nexus/service/local/artifact/maven/redirect?r=internal-snapshots&g=org.nuxeo.ecm.distribution&a=nuxeo-distribution-tomcat&v=@VERSION@&e=zip&c=nuxeo-@NAME@"
 default["site"]["release-search-pattern"] = "http://maven.in.nuxeo.com/nexus/service/local/artifact/maven/redirect?r=internal-releases&g=org.nuxeo.ecm.distribution&a=nuxeo-distribution-tomcat&v=@VERSION@&e=zip&c=nuxeo-@NAME@"
 
+default["distributions"]["cap-6.0"]["filename"] = "nuxeo-cap-6.0-tomcat.zip"
+default["distributions"]["cap-6.0"]["url"] = "http://cdn.nuxeo.com/nuxeo-6.0/nuxeo-cap-6.0-tomcat-sdk.zip"
+default["distributions"]["cap-6.0"]["sha256sum"] = "de30dc9e84944c8250a9b8e00b2f7aafb851316079c3b99eba72e55248f38868"
+
 default["distributions"]["cap-5.5"]["filename"] = "nuxeo-cap-5.5-tomcat.zip"
 default["distributions"]["cap-5.5"]["url"] = "http://cdn.nuxeo.com/nuxeo-5.5/nuxeo-cap-5.5-tomcat-offline.zip"
 default["distributions"]["cap-5.5"]["sha256sum"] = "6890844643cb6076132eb4a0716e6264af0ae6cc62aa204035ab1f69f6e1d3ac"

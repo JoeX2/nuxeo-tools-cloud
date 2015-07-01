@@ -7,6 +7,8 @@ class Chef
   class Provider
     class NuxeoNxinstance < Chef::Provider
 
+    provides :nuxeo_nxinstance, os: "linux"
+
     attr_accessor :id
     attr_accessor :user
     attr_accessor :group
@@ -25,6 +27,8 @@ class Chef
     def initialize(new_resource, run_context=nil)
         super
         rubyzip = Chef::Resource::ChefGem.new("rubyzip", run_context)
+        rubyzip.run_action(:install)
+        rubyzip = Chef::Resource::ChefGem.new("zip-zip", run_context)
         rubyzip.run_action(:install)
         json = Chef::Resource::ChefGem.new("json", run_context)
         json.run_action(:install)
@@ -127,7 +131,7 @@ class Chef
                 FileUtils.rm(symlink)
             end
             unzip_distribution(user_info)
-            add_new_launcher(user_info)
+            #add_new_launcher(user_info)
         end
         setup_nuxeo(user_info)
     end
@@ -318,19 +322,19 @@ class Chef
         remote_launcher.source(node["launcher"]["url"])
         remote_launcher.path(launcher_tmp)
         remote_launcher.mode("0644")
-        remote_launcher.run_action(:create_if_missing)
+        #remote_launcher.run_action(:create_if_missing)
         remote_resources = Chef::Resource::RemoteFile.new("resources-#{@new_resource.id}", run_context)
         remote_resources.source(node["resources"]["url"])
         remote_resources.path(resources_tmp)
         remote_resources.mode("0644")
-        remote_resources.run_action(:create_if_missing)
+        #remote_resources.run_action(:create_if_missing)
 
         # Add new nuxeo launcher
         nuxeo_launcher = ::File.join(@new_resource.basedir, "server", "bin", "alt-nuxeo-launcher.jar")
         FileUtils.rm_f(nuxeo_launcher)
-        FileUtils.cp(launcher_tmp, nuxeo_launcher)
-        FileUtils.chown(user_info.uid, user_info.gid, nuxeo_launcher)
-        FileUtils.chmod(0600, nuxeo_launcher)
+        #FileUtils.cp(launcher_tmp, nuxeo_launcher)
+        #FileUtils.chown(user_info.uid, user_info.gid, nuxeo_launcher)
+        #FileUtils.chmod(0600, nuxeo_launcher)
 
         # Add new nuxeoctl
         nuxeoctl = ::File.join(@new_resource.basedir, "server", "bin", "alt-nuxeoctl")

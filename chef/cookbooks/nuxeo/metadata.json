@@ -6,24 +6,33 @@
   "maintainer_email": "packagers@nuxeo.com",
   "license": "LGPL",
   "platforms": {
+
   },
   "dependencies": {
   },
   "recommendations": {
+
   },
   "suggestions": {
+
   },
   "conflicting": {
+
   },
   "providing": {
+
   },
   "replacing": {
+
   },
   "attributes": {
+
   },
   "groupings": {
+
   },
   "recipes": {
+
   },
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
